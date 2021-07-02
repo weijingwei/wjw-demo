@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wjw.model.CrisisEvent;
+import com.wjw.model.CrisisNote;
+import com.wjw.model.CrisisTaskList;
 import com.wjw.utils.JasperReportUtil;
 
 @RestController
@@ -22,20 +25,38 @@ public class JasperReportController {
 	public void getReport(@RequestParam("type") String reportType, HttpServletResponse response)
 			throws Exception {
 		HashMap<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("name", "xiaoming");
-
-		List<HashMap> list = new ArrayList<>();
-		for (int i = 0; i < 100; i++) {
-			HashMap<String, String> item = new HashMap<String, String>();
-			item.put("Field1",  "Field1-" + i);
-			item.put("Field2",  "Field2-" + i);
-			list.add(item);
+		parameters.put("notesSubreportPath", JasperReportUtil.getJasperFileDir("notes"));
+		parameters.put("taskListsSubreportPath", JasperReportUtil.getJasperFileDir("taskLists"));
+		List<Object> fieldsList = new ArrayList<>();
+		
+		for (int i = 0; i < 3; i++) {
+			CrisisEvent event = new CrisisEvent();
+			event.setId("id_" + i);
+			event.setTitle("eventTitle_" + i);
+			event.setEventType("eventType_" + i / 2);
+			event.setNotes(new ArrayList<>());
+			event.setTaskLists(new ArrayList<>());
+			fieldsList.add(event);
+			for (int j = 0; j < 4; j++) {
+                CrisisNote note = new CrisisNote();
+                note.setId("noteId_" + i + "_" + j);
+                note.setScopeId("noteScopeId_" + event.getId());
+                note.setNoteContent("noteContent_" + i + "_" + j);
+                event.getNotes().add(note);
+            }
+			for (int j = 0; j < 5; j++) {
+                CrisisTaskList taskList = new CrisisTaskList();
+                taskList.setId("taskListId_" + i + "_" + j);
+                taskList.setScopeId("taskListScopeId_" + event.getId());
+                taskList.setName("taskListName_" + i + "_" + j);
+                event.getTaskLists().add(taskList);
+            }
 		}
-		String jasperPath = JasperReportUtil.getJasperFileDir("chapter1");
+		String jasperPath = JasperReportUtil.getJasperFileDir("events");
 		if (reportType.equals("pdf")) {
-			JasperReportUtil.exportToPdf(jasperPath, parameters, list, response);
+			JasperReportUtil.exportToPdf(jasperPath, parameters, fieldsList, response);
 		} else if (reportType.equals("html")) {
-			JasperReportUtil.exportToHtml(jasperPath, parameters, list, response);
+			JasperReportUtil.exportToHtml(jasperPath, parameters, fieldsList, response);
 		}
 	}
 }
