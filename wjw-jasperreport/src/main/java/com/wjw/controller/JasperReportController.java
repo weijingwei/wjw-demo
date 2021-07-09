@@ -52,7 +52,7 @@ public class JasperReportController {
                 event.getTaskLists().add(taskList);
             }
 		}
-		String jasperPath = JasperReportUtil.getJasperFileDir("events");
+		String jasperPath = JasperReportUtil.getJasperFileDir("events2");
 		if (reportType.equals("pdf")) {
 			JasperReportUtil.exportToPdf(jasperPath, parameters, fieldsList, response);
 		} else if (reportType.equals("html")) {
