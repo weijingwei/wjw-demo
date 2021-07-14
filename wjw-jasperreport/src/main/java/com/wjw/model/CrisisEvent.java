@@ -8,8 +8,11 @@ import lombok.Data;
 public class CrisisEvent {
     private String id;
     private String title;
+    private String description;
+    private String eventStatus;
     private String eventType;
     private List<CrisisNote> notes;
     private List<CrisisTaskList> taskLists;
+    private long createdDate;
     
 }

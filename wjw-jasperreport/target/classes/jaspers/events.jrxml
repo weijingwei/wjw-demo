@@ -4,6 +4,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="notesSubreportPath" class="java.lang.String"/>
 	<parameter name="taskListsSubreportPath" class="java.lang.String"/>
+	<parameter name="picPath" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -45,6 +46,10 @@
 				</textElement>
 				<text><![CDATA[Crisis Event Report]]></text>
 			</staticText>
+			<image>
+				<reportElement x="410" y="10" width="50" height="50" uuid="49d45df8-9bc7-4936-92d6-e7e6e2a9c5a2"/>
+				<imageExpression><![CDATA[$P{picPath}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<detail>
@@ -71,9 +76,9 @@
 				<text><![CDATA[Event ID:]]></text>
 			</staticText>
 		</band>
-		<band height="128">
+		<band height="111">
 			<subreport>
-				<reportElement x="4" y="10" width="470" height="109" uuid="9310d26e-e261-4699-8d2f-c689ab73846f"/>
+				<reportElement x="4" y="10" width="470" height="90" uuid="9310d26e-e261-4699-8d2f-c689ab73846f"/>
 				<subreportParameter name="notes">
 					<subreportParameterExpression><![CDATA[$F{notes}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -94,7 +99,7 @@
 	</detail>
 	<pageFooter>
 		<band height="62" splitType="Stretch">
-			<image rotation="None" hAlign="Center" vAlign="Middle">
+			<image rotation="None" hAlign="Center" vAlign="Middle" evaluationTime="Auto">
 				<reportElement x="9" y="6" width="540" height="50" uuid="6d960dda-af22-4a42-b7e8-162902f94577"/>
 				<imageExpression><![CDATA["https://manager-dev3.everbridge.net/statics/stylesheets-new/components/images/EVBG-logo.svg"]]></imageExpression>
 			</image>

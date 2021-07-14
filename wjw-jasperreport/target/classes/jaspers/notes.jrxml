@@ -47,7 +47,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="70" splitType="Stretch">
+		<band height="66" splitType="Stretch">
 			<componentElement>
 				<reportElement x="0" y="0" width="480" height="60" uuid="68e20434-505e-4f80-9da3-96e379655f82">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
