@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontFamilies>
+    <fontFamily name="roboto">
+        <normal>fonts/ROBOTO-REGULAR.TTF</normal>
+        <bold>fonts/ROBOTO-REGULAR.TTF</bold>
+        <italic>fonts/ROBOTO-REGULAR.TTF</italic>
+        <boldItalic>fonts/ROBOTO-REGULAR.TTF</boldItalic>
+        <pdfEncoding>Identity-H</pdfEncoding>
+        <pdfEmbedded>true</pdfEmbedded>
+        <exportFonts>
+            <export key="net.sf.jasperreports.html">'roboto', Arial, Helvetica, sans-serif</export>
+            <export key="net.sf.jasperreports.xhtml">'roboto', Arial, Helvetica, sans-serif</export>
+        </exportFonts>
+    </fontFamily>
+    <fontFamily name="ARIALUNI">
+		<normal>fonts/ARIALUNI.TTF</normal>
+		<pdfEncoding>Identity-H</pdfEncoding>
+		<pdfEmbedded>true</pdfEmbedded>
+		<exportFonts>
+            <export key="net.sf.jasperreports.html">'ARIALUNI', Arial, Helvetica, sans-serif</export>
+            <export key="net.sf.jasperreports.xhtml">'ARIALUNI', Arial, Helvetica, sans-serif</export>
+        </exportFonts>
+	</fontFamily>
+</fontFamilies>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="first test" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="20" uuid="b6ad3baa-1091-4a4b-a5ad-0c9298ebdcfc">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Multiple Events Report" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="20" uuid="b6ad3baa-1091-4a4b-a5ad-0c9298ebdcfc">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
@@ -135,7 +135,7 @@
 			<band height="30">
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<textField textAdjust="StretchHeight">
-					<reportElement style="Style1" x="30" y="0" width="535" height="30" forecolor="#31394D" backcolor="#D9C4B1" uuid="1ab2142e-5ea3-4833-a77c-e91ab228fa84">
+					<reportElement style="Style1" x="30" y="0" width="537" height="30" forecolor="#31394D" backcolor="#D9C4B1" uuid="1ab2142e-5ea3-4833-a77c-e91ab228fa84">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -150,7 +150,7 @@
 						<rightPen lineWidth="1.0"/>
 					</box>
 					<textElement verticalAlignment="Middle" markup="none">
-						<font fontName="Roboto" size="10" isBold="true"/>
+						<font fontName="Arial Unicode MS" size="10" isBold="true"/>
 						<paragraph leftIndent="10"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{eventType}]]></textFieldExpression>
@@ -176,15 +176,15 @@
 				<box rightPadding="0"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
-			<textField pattern="MMMMM dd, yyyy">
+			<textField pattern="MMM dd, yyyy">
 				<reportElement x="30" y="125" width="166" height="24" forecolor="#455A65" uuid="dda507d8-90f0-46b3-b095-9935938ec732">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Roboto" size="16"/>
+					<font fontName="Arial Unicode MS" size="16"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("MMM dd, yyyy", Locale.US).format(new java.util.Date().getTime())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="30" y="165" width="141" height="14" forecolor="#31394D" uuid="3b6adb3d-a337-4c7e-ba67-b1fa020b8bc6">
@@ -193,18 +193,18 @@
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement markup="none">
-					<font fontName="Roboto" size="9" isBold="true"/>
+					<font fontName="Arial Unicode MS" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Event Count]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="508" y="160" width="57" height="14" forecolor="#31394D" uuid="ce4e7137-dbc5-43e5-98fe-2ce8001b7aaf">
+				<reportElement x="508" y="165" width="57" height="14" forecolor="#31394D" uuid="ce4e7137-dbc5-43e5-98fe-2ce8001b7aaf">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right" markup="none">
-					<font fontName="Roboto" size="9" isBold="true"/>
+					<font fontName="Arial Unicode MS" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Date Range]]></text>
 			</staticText>
@@ -215,18 +215,18 @@
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Roboto" size="9"/>
+					<font fontName="Arial Unicode MS" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT} + " (" + $V{activeEventCount} + "  Active, " + $V{closedEventCount} + " Closed)"]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont">
-				<reportElement x="446" y="180" width="118" height="14" forecolor="#666666" uuid="9dca0e55-be36-46b1-8493-c33fc0f70944">
+				<reportElement x="447" y="180" width="118" height="14" forecolor="#666666" uuid="9dca0e55-be36-46b1-8493-c33fc0f70944">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Roboto" size="9"/>
+					<font fontName="Arial Unicode MS" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("MMM dd, yyyy", Locale.US).format($P{startDate}) + " - " + new SimpleDateFormat("MMM dd, yyyy", Locale.US).format($P{endDate})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MMM dd, yyyy").format($P{startDate}) + " - " + new SimpleDateFormat("MMM dd, yyyy").format($P{endDate})]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
 				<reportElement x="30" y="87" width="500" height="38" forecolor="#31394D" uuid="06379891-de69-4445-b28a-a596cd00d730">
@@ -236,7 +236,7 @@
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement markup="none">
-					<font fontName="Roboto" size="30" isBold="true"/>
+					<font fontName="Arial Unicode MS" size="30" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{reportTitle}]]></textFieldExpression>
 			</textField>
@@ -294,7 +294,7 @@
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<textElement verticalAlignment="Middle">
-							<font fontName="Roboto" size="10.5" isBold="true"/>
+							<font fontName="Arial Unicode MS" size="10.5" isBold="true"/>
 							<paragraph leftIndent="10"/>
 						</textElement>
 						<text><![CDATA[LOCAL EVENT DATE ]]></text>
@@ -314,7 +314,7 @@
 							<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#F3F3F3"/>
 						</box>
 						<textElement verticalAlignment="Middle">
-							<font fontName="Roboto" size="10.5" isBold="true"/>
+							<font fontName="Arial Unicode MS" size="10.5" isBold="true"/>
 							<paragraph leftIndent="10"/>
 						</textElement>
 						<text><![CDATA[EVENT NAME / ID]]></text>
@@ -327,7 +327,7 @@
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<textElement verticalAlignment="Middle">
-							<font fontName="Roboto" size="10.5" isBold="true"/>
+							<font fontName="Arial Unicode MS" size="10.5" isBold="true"/>
 							<paragraph leftIndent="10"/>
 						</textElement>
 						<text><![CDATA[DESCRIPTION]]></text>
@@ -350,10 +350,10 @@
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<textElement verticalAlignment="Middle">
-							<font fontName="Roboto"/>
+							<font fontName="Arial Unicode MS"/>
 							<paragraph leftIndent="10"/>
 						</textElement>
-						<textFieldExpression><![CDATA[new SimpleDateFormat("MMM dd, yyyy hh:mm:ss z", Locale.US).format($F{createdDate})]]></textFieldExpression>
+						<textFieldExpression><![CDATA[new SimpleDateFormat("MMM dd, yyyy hh:mm:ss z").format($F{createdDate})]]></textFieldExpression>
 					</textField>
 					<textField textAdjust="StretchHeight">
 						<reportElement positionType="Float" stretchType="ElementGroupHeight" x="135" y="30" width="200" height="40" forecolor="#666666" uuid="121eb199-e287-42a3-bc15-e3b658887eae">
@@ -378,10 +378,10 @@
 							<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#F3F3F3"/>
 						</box>
 						<textElement verticalAlignment="Middle" markup="html">
-							<font fontName="Roboto"/>
+							<font fontName="Arial Unicode MS"/>
 							<paragraph leftIndent="10"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$F{title} + " [" + $F{eventStatus} + "]" +"<br/>"+ $F{id}]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$F{title} + " [" + $F{eventStatus}  + "]" +"<br/>"+  $F{id}]]></textFieldExpression>
 					</textField>
 					<textField textAdjust="StretchHeight">
 						<reportElement positionType="Float" stretchType="ElementGroupHeight" x="335" y="30" width="200" height="40" printWhenGroupChanges="Group1" forecolor="#666666" uuid="f932fe8b-c6b4-4963-90dc-79a6682605da">
@@ -400,7 +400,7 @@
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<textElement verticalAlignment="Middle">
-							<font fontName="Roboto"/>
+							<font fontName="Arial Unicode MS"/>
 							<paragraph leftIndent="10"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
@@ -421,7 +421,7 @@
 						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Roboto" size="10.5" isBold="true"/>
+						<font fontName="Arial Unicode MS" size="10.5" isBold="true"/>
 						<paragraph leftIndent="10"/>
 					</textElement>
 					<text><![CDATA[Note]]></text>
@@ -434,7 +434,7 @@
 						<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 					</reportElement>
 					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-						<datasetRun subDataset="Dataset1" uuid="b3408d25-6732-4e4a-9800-61ceaad12edc">
+						<datasetRun subDataset="Dataset1" uuid="1415f119-f7b9-40b9-b6f1-e1d0ad43271d">
 							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{notes})]]></dataSourceExpression>
 						</datasetRun>
 						<jr:column width="135" uuid="f48d20f5-1f05-480c-8114-883ea2f65042">
@@ -451,9 +451,9 @@
 								<textField textAdjust="StretchHeight">
 									<reportElement x="0" y="0" width="135" height="30" forecolor="#666666" uuid="6f932eb9-856d-4404-8c44-2aa6d8cef338"/>
 									<textElement verticalAlignment="Middle">
-										<font fontName="Roboto"/>
+										<font fontName="Arial Unicode MS"/>
 									</textElement>
-									<textFieldExpression><![CDATA[new SimpleDateFormat("MMM dd, yyyy hh:mm:ss z", Locale.US).format($F{createdDate})]]></textFieldExpression>
+									<textFieldExpression><![CDATA[new SimpleDateFormat("MMM dd, yyyy hh:mm:ss z").format($F{createdDate})]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -470,7 +470,7 @@
 								<textField textAdjust="StretchHeight">
 									<reportElement x="0" y="0" width="389" height="30" forecolor="#666666" uuid="13ffdab1-791e-4e5d-91fc-50200edea8e1"/>
 									<textElement verticalAlignment="Middle" markup="html">
-										<font fontName="Roboto"/>
+										<font fontName="Arial Unicode MS"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{createdName} + "<br/>" + $F{noteContent}]]></textFieldExpression>
 								</textField>

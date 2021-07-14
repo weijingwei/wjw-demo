@@ -1,6 +1,7 @@
 package com.wjw.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -31,24 +32,24 @@ public class JasperReportController {
 		parameters.put("picPath", "https://manager-dev3.everbridge.net/statics/stylesheets-new/components/images/EVBG-logo.svg");
 		parameters.put("startDate", new Date().getTime());
 		parameters.put("endDate", new Date().getTime());
-		List<Object> fieldsList = new ArrayList<>();
+		List<CrisisEvent> fieldsList = new ArrayList<>();
 		
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 9; i++) {
 			CrisisEvent event = new CrisisEvent();
 			event.setId("eventId_" + i);
 			event.setTitle("eventTitle_" + i);
-			event.setEventType("eventType_" + i % 2);
+			event.setEventType("eventType_" + i % 3);
 			event.setEventStatus(i % 2 == 0 ? "Active" : "Closed");
 			event.setDescription("eventDescription_" + 1);
 			event.setNotes(new ArrayList<>());
 			event.setCreatedDate(new Date().getTime());
 			event.setTaskLists(new ArrayList<>());
 			fieldsList.add(event);
-			for (int j = 0; j < 4; j++) {
+			for (int j = 0; j < i % 3 + 1; j++) {
                 CrisisNote note = new CrisisNote();
                 note.setId("noteId_" + i + "_" + j);
                 note.setScopeId("noteScopeId_" + event.getId());
-                note.setNoteContent("noteContent_" + i + "_" + j);
+                note.setNoteContent("noteContent_" + i + "_" + j + "內容");
                 note.setCreatedDate(new Date().getTime());
                 note.setCreatedName("jingwei wei");
                 event.getNotes().add(note);
@@ -61,6 +62,7 @@ public class JasperReportController {
                 event.getTaskLists().add(taskList);
             }
 		}
+		Collections.sort(fieldsList);
 		String jasperPath = JasperReportUtil.getJasperFileDir("MultipleEventsReport");
 		if (reportType.equals("pdf")) {
 			JasperReportUtil.exportToPdf(jasperPath, parameters, fieldsList, response);
