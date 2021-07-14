@@ -32,6 +32,7 @@ public class JasperReportController {
 		parameters.put("picPath", "https://manager-dev3.everbridge.net/statics/stylesheets-new/components/images/EVBG-logo.svg");
 		parameters.put("startDate", new Date().getTime());
 		parameters.put("endDate", new Date().getTime());
+		parameters.put("logo", "https://i.ibb.co/rvdw2hg/logo.png");
 		List<CrisisEvent> fieldsList = new ArrayList<>();
 		
 		for (int i = 0; i < 9; i++) {
@@ -49,7 +50,7 @@ public class JasperReportController {
                 CrisisNote note = new CrisisNote();
                 note.setId("noteId_" + i + "_" + j);
                 note.setScopeId("noteScopeId_" + event.getId());
-                note.setNoteContent("noteContent_" + i + "_" + j + "內容");
+                note.setNoteContent("noteContent_" + i + "_" + j + "_內容");
                 note.setCreatedDate(new Date().getTime());
                 note.setCreatedName("jingwei wei");
                 event.getNotes().add(note);
