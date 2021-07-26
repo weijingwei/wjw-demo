@@ -27,12 +27,14 @@ public class JasperReportController {
 	public void getReport(@RequestParam("type") String reportType, HttpServletResponse response)
 			throws Exception {
 		HashMap<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("reportTitle", "Report Title");
 		parameters.put("notesSubreportPath", JasperReportUtil.getJasperFileDir("notes"));
 		parameters.put("taskListsSubreportPath", JasperReportUtil.getJasperFileDir("taskLists"));
 		parameters.put("picPath", "https://manager-dev3.everbridge.net/statics/stylesheets-new/components/images/EVBG-logo.svg");
 		parameters.put("startDate", new Date().getTime());
 		parameters.put("endDate", new Date().getTime());
-		parameters.put("logo", "https://i.ibb.co/rvdw2hg/logo.png");
+//		parameters.put("logo", "https://i.ibb.co/rvdw2hg/logo.png");
+		parameters.put("logo", "jaspers/logo.png");
 		List<CrisisEvent> fieldsList = new ArrayList<>();
 		
 		for (int i = 0; i < 9; i++) {
@@ -50,7 +52,11 @@ public class JasperReportController {
                 CrisisNote note = new CrisisNote();
                 note.setId("noteId_" + i + "_" + j);
                 note.setScopeId("noteScopeId_" + event.getId());
-                note.setNoteContent("noteContent_" + i + "_" + j + "_內容");
+                String noteContent = "";
+                for (int k = 0; k < 100; k++) {
+                    noteContent += "noteContent_" + i + "_" + j + "_內容 ";
+                }
+                note.setNoteContent(noteContent);
                 note.setCreatedDate(new Date().getTime());
                 note.setCreatedName("jingwei wei");
                 event.getNotes().add(note);
