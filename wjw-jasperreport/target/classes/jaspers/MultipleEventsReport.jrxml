@@ -54,7 +54,7 @@
 			<property name="net.sf.jasperreports.json.field.expression" value="id"/>
 			<fieldDescription><![CDATA[id]]></fieldDescription>
 		</field>
-		<field name="createdDate" class="java.lang.Long">
+		<field name="createdDate" class="java.lang.String">
 			<property name="net.sf.jasperreports.json.field.expression" value="createdDate"/>
 			<fieldDescription><![CDATA[createdDate]]></fieldDescription>
 		</field>
@@ -79,15 +79,16 @@
 	<parameter name="logo" class="java.lang.String">
 		<defaultValueExpression><![CDATA["https://i.ibb.co/rvdw2hg/logo.png"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="startDate" class="java.lang.Long">
+	<parameter name="startDate" class="java.lang.String">
 		<defaultValueExpression><![CDATA[new Date().getTime()]]></defaultValueExpression>
 	</parameter>
-	<parameter name="endDate" class="java.lang.Long">
+	<parameter name="endDate" class="java.lang.String">
 		<defaultValueExpression><![CDATA[new Date().getTime()]]></defaultValueExpression>
 	</parameter>
 	<parameter name="reportTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Multiple Events Report"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="reportDate" class="java.lang.String"/>
 	<queryString language="JSON">
 		<![CDATA[]]>
 	</queryString>
@@ -95,7 +96,7 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="id"/>
 		<fieldDescription><![CDATA[id]]></fieldDescription>
 	</field>
-	<field name="createdDate" class="java.lang.Long">
+	<field name="createdDate" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="createdDate"/>
 		<fieldDescription><![CDATA[createdDate]]></fieldDescription>
 	</field>
@@ -184,7 +185,7 @@
 				<textElement>
 					<font fontName="Arial Unicode MS" size="16"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{reportDate}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="30" y="165" width="141" height="14" forecolor="#31394D" uuid="3b6adb3d-a337-4c7e-ba67-b1fa020b8bc6">
@@ -226,7 +227,7 @@
 				<textElement textAlignment="Right">
 					<font fontName="Arial Unicode MS" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("MMM dd, yyyy").format($P{startDate}) + " - " + new SimpleDateFormat("MMM dd, yyyy").format($P{endDate})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{startDate} + " - " + $P{endDate}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
 				<reportElement x="30" y="87" width="500" height="38" forecolor="#31394D" uuid="06379891-de69-4445-b28a-a596cd00d730">
@@ -353,7 +354,7 @@
 							<font fontName="Arial Unicode MS"/>
 							<paragraph leftIndent="10"/>
 						</textElement>
-						<textFieldExpression><![CDATA[new SimpleDateFormat("MMM dd, yyyy hh:mm:ss z").format($F{createdDate})]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$F{createdDate}]]></textFieldExpression>
 					</textField>
 					<textField textAdjust="StretchHeight">
 						<reportElement positionType="Float" stretchType="ElementGroupHeight" x="135" y="30" width="200" height="40" forecolor="#666666" uuid="121eb199-e287-42a3-bc15-e3b658887eae">
@@ -453,7 +454,7 @@
 									<textElement verticalAlignment="Middle">
 										<font fontName="Arial Unicode MS"/>
 									</textElement>
-									<textFieldExpression><![CDATA[new SimpleDateFormat("MMM dd, yyyy hh:mm:ss z").format($F{createdDate})]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{createdDate}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>

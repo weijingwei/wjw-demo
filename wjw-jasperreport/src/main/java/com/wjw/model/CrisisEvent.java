@@ -1,5 +1,6 @@
 package com.wjw.model;
 
+import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -13,7 +14,7 @@ public class CrisisEvent implements Comparable<CrisisEvent> {
     private String eventType;
     private List<CrisisNote> notes;
     private List<CrisisTaskList> taskLists;
-    private long createdDate;
+    private Date createdDate;
     @Override
     public int compareTo(CrisisEvent e) {
         return this.eventType.compareTo(e.getEventType());

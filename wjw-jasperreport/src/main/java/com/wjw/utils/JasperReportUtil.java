@@ -1,10 +1,15 @@
 package com.wjw.utils;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -31,10 +36,22 @@ import net.sf.jasperreports.export.SimpleHtmlReportConfiguration;
 
 @Slf4j
 public class JasperReportUtil {
+
     final static String jasperDir = "jaspers";
     final static String suffix = ".jasper";
     final static String suffix_jasper = ".jasper";
     final static String suffix_jrxml = ".jrxml";
+    
+    public enum ReportType {
+        HTML,
+        PDF,
+        XLS,
+        XLSX,
+        XML,
+        RTF,
+        CSV,
+        DOC
+    }
 
     public static String getJasperFileDir(String fileName) {
         return jasperDir + File.separator + fileName + suffix;
@@ -73,7 +90,7 @@ public class JasperReportUtil {
         return contentType;
     }
 
-    static JasperPrint getJasperPrint(InputStream jasperStream, Map<String, Object> parameters, List<?> list) throws JRException {
+    static JasperPrint getJasperPrint(InputStream jasperStream, Map<String, Object> parameters, List<?> list) throws JRException, IOException {
         JRDataSource dataSource = null;
         if (null == list || list.size() == 0) {
             dataSource = new JREmptyDataSource();
@@ -87,10 +104,14 @@ public class JasperReportUtil {
         } else if (suffix.equals(suffix_jrxml)) {
             JasperDesign jasperDesign = JRXmlLoader.load(jasperStream);
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-            JasperCompileManager.compileReportToFile(jasperDesign, "D:\\git\\wjw-demo\\wjw-jasperreport\\src\\main\\resources\\jaspers\\export.jasper");
+            JasperCompileManager.compileReportToFile(jasperDesign, "jaspers/export.jasper");
             jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
         }
-        JasperExportManager.exportReportToPdfFile(jasperPrint, "D:\\git\\wjw-demo\\wjw-jasperreport\\src\\main\\resources\\jaspers\\exportReport.pdf");
+        File directory = new ClassPathResource("").getFile();
+        File reportFile = File.createTempFile("exportReport", ".pdf", directory);
+        JasperExportManager.exportReportToPdfFile(jasperPrint, reportFile.getAbsolutePath());
+        System.out.println(reportFile.getPath());
+        Files.delete(reportFile.toPath());
         return jasperPrint;
     }
 
@@ -153,16 +174,16 @@ public class JasperReportUtil {
             out.close();
         }
     }
-
-
-    public enum ReportType {
-        HTML,
-        PDF,
-        XLS,
-        XLSX,
-        XML,
-        RTF,
-        CSV,
-        DOC
+    
+    public static final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.US);
+    public static final SimpleDateFormat datetTimeFormat = new SimpleDateFormat("MMM dd, yyyy hh:mm:ss z", Locale.US);
+    
+    public static String dateFormat(Date date) {
+        return dateFormat.format(date);
     }
+    
+    public static String dateTimeFormat(Date date) {
+        return dateTimeFormat(date);
+    }
+
 }

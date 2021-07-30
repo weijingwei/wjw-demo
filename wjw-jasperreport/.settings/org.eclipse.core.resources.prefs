@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/resources/jaspers/Blank_A4.jrxml=UTF-8
 encoding//src/main/resources/jaspers/MultipleEventsReport.jrxml=UTF-8
 encoding//src/main/resources/jaspers/events.jrxml=UTF-8
 encoding//src/main/resources/jaspers/notes.jrxml=UTF-8

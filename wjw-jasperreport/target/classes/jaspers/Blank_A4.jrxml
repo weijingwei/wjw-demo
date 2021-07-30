@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="510a2a8d-c195-43ea-a76e-ce6f8486420e">
+	<property name="net.sf.jasperreports.components.map.key" value="AIzaSyC4XY8BA3JVU8ZcVgS88u-AYMWukArbNJc"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -17,7 +18,16 @@
 		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="171" splitType="Stretch">
+			<componentElement>
+				<reportElement x="80" y="10" width="150" height="150" uuid="39ba74ff-ca52-4031-b441-3782995f41b2"/>
+				<c:map xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:latitudeExpression><![CDATA[45.433968f]]></c:latitudeExpression>
+					<c:longitudeExpression><![CDATA[12.337967f]]></c:longitudeExpression>
+					<c:zoomExpression><![CDATA[8]]></c:zoomExpression>
+				</c:map>
+			</componentElement>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>

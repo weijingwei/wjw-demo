@@ -1,10 +1,12 @@
 package com.wjw.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,17 +24,16 @@ import com.wjw.utils.JasperReportUtil;
 @RequestMapping("/jasper")
 public class JasperReportController {
 
-
 	@GetMapping("")
 	public void getReport(@RequestParam("type") String reportType, HttpServletResponse response)
 			throws Exception {
 		HashMap<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("notesSubreportPath", JasperReportUtil.getJasperFileDir("notes"));
 		parameters.put("taskListsSubreportPath", JasperReportUtil.getJasperFileDir("taskLists"));
-		parameters.put("picPath", "https://manager-dev3.everbridge.net/statics/stylesheets-new/components/images/EVBG-logo.svg");
-		parameters.put("startDate", new Date().getTime());
-		parameters.put("endDate", new Date().getTime());
+		parameters.put("startDate", new Date());
+		parameters.put("endDate", new Date());
 		parameters.put("logo", "https://i.ibb.co/rvdw2hg/logo.png");
+		parameters.put("reportDate", new Date());
 		List<CrisisEvent> fieldsList = new ArrayList<>();
 		
 		for (int i = 0; i < 9; i++) {
@@ -43,7 +44,7 @@ public class JasperReportController {
 			event.setEventStatus(i % 2 == 0 ? "Active" : "Closed");
 			event.setDescription("eventDescription_" + 1);
 			event.setNotes(new ArrayList<>());
-			event.setCreatedDate(new Date().getTime());
+			event.setCreatedDate(new Date());
 			event.setTaskLists(new ArrayList<>());
 			fieldsList.add(event);
 			for (int j = 0; j < i % 3 + 1; j++) {
@@ -51,7 +52,7 @@ public class JasperReportController {
                 note.setId("noteId_" + i + "_" + j);
                 note.setScopeId("noteScopeId_" + event.getId());
                 note.setNoteContent("noteContent_" + i + "_" + j + "_內容");
-                note.setCreatedDate(new Date().getTime());
+                note.setCreatedDate(new Date());
                 note.setCreatedName("jingwei wei");
                 event.getNotes().add(note);
             }
@@ -64,7 +65,7 @@ public class JasperReportController {
             }
 		}
 		Collections.sort(fieldsList);
-		String jasperPath = JasperReportUtil.getJasperFileDir("MultipleEventsReport");
+		String jasperPath = JasperReportUtil.getJasperFileDir("Blank_A4");
 		if (reportType.equals("pdf")) {
 			JasperReportUtil.exportToPdf(jasperPath, parameters, fieldsList, response);
 		} else if (reportType.equals("html")) {
